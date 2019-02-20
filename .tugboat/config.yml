@@ -12,5 +12,8 @@ services:
     commands:
 
       init:
-        - node server.js
+        - mkdir -p /etc/service/node
+        - echo "#!/bin/sh" > /etc/service/node/run
+        - echo "cd ${TUGBOAT_ROOT} && node server.js" >> /etc/service/node/run
+        - chmod +x /etc/service/node/run
 
